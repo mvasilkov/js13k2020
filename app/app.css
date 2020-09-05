@@ -1,0 +1,20 @@
+body {
+    align-items: center;
+    background: #101010;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+.box {}
+
+.can {
+    background: #000;
+    display: block;
+    height: 540px;
+    outline: 1px solid #202020;
+    touch-action: none;
+    width: 960px;
+}
