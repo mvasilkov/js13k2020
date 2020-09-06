@@ -10,9 +10,12 @@ const enum Settings {
     screenHeight = 540,
     screenWidth = 960,
     //
+    displaySize = 1102, // Math.ceil(Math.sqrt(960 ** 2 + 540 ** 2))
     reticleStiffness = 0.1,
     targetCaptureDist = 64,
     targetReleaseDist = 256,
+    waitCurtain = 48,
+    waitLevel = 144,
 }
 
 const register0 = new NVec2

@@ -5,6 +5,9 @@ const enum LevelState {
     INITIAL = 0,
     AIMING,
     FIRING,
+    WAITING,
+    FAILING,
+    RESTARTING,
 }
 
 class Level extends NScene {
@@ -14,6 +17,7 @@ class Level extends NScene {
     firingPin: FiringPin | null
     website: Website
     state: LevelState
+    waited: number
 
     constructor(startingPoint: NVec2) {
         super()
@@ -23,6 +27,7 @@ class Level extends NScene {
         this.firingPin = null
         this.website = new Website
         this.state = LevelState.INITIAL
+        this.waited = 0
     }
 
     launch(): boolean {
