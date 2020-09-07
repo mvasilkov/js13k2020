@@ -11,66 +11,54 @@ function paintBackground(canvas: CanvasRenderingContext2D, t: number, level: Lev
 }
 
 function paintCurtain(canvas: CanvasRenderingContext2D, t: number, level: Level) {
-    let barWidth: number
+    let width: number
 
     if (level.state === LevelState.WAITING) {
-        barWidth = (level.waited - 1 + t) / Settings.waitLevel * Settings.screenWidth
+        width = (level.waited - 1 + t) / Settings.waitLevel * Settings.screenWidth
 
         canvas.fillStyle = FAILURE_BACK
-        canvas.fillRect(0, 0, barWidth, 3)
+        canvas.fillRect(0, 0, width, 3)
     }
+
     else if (level.state === LevelState.FAILING) {
-        barWidth = (level.waited - 1 + t) / Settings.waitCurtain * Settings.displaySize
+        width = easeOutQuad((level.curtain - 1 + t) / Settings.waitCurtain) * 0.5 * Settings.displaySize
 
         canvas.fillStyle = FAILURE_BACK
         canvas.fillRect(0, 0, Settings.screenWidth, 3)
 
-        canvas.save()
-
-        canvas.translate(0, Settings.screenHeight)
-        canvas.rotate(-0.5124) // Math.atan2(-540, 960)
-
-        canvas.beginPath()
-        canvas.lineTo(0, -500)
-        canvas.lineTo(barWidth, -500)
-        canvas.lineTo(barWidth, 1000)
-        canvas.lineTo(0, 1000)
-        canvas.closePath()
-
-        canvas.restore()
-
-        canvas.save()
-
-        canvas.clip()
-
-        canvas.fillRect(0, 0, Settings.screenWidth, Settings.screenHeight)
-
-        canvas.restore()
+        _paintCurtain(canvas, 0, Settings.screenHeight, width)
+        _paintCurtain(canvas, Settings.screenWidth, 0, -width)
     }
+
     else if (level.state === LevelState.RESTARTING) {
-        barWidth = (level.waited + 1 - t) / Settings.waitCurtain * Settings.displaySize
-
-        canvas.save()
-
-        canvas.translate(Settings.screenWidth, 0)
-        canvas.rotate(-0.5124) // Math.atan2(-540, 960)
-
-        canvas.beginPath()
-        canvas.lineTo(0, -500)
-        canvas.lineTo(-barWidth, -500)
-        canvas.lineTo(-barWidth, 1000)
-        canvas.lineTo(0, 1000)
-        canvas.closePath()
-
-        canvas.restore()
-
-        canvas.save()
-
-        canvas.clip()
+        width = easeInQuad((level.curtain + 1 - t) / Settings.waitCurtain) * 0.5 * Settings.displaySize
 
         canvas.fillStyle = FAILURE_BACK
-        canvas.fillRect(0, 0, Settings.screenWidth, Settings.screenHeight)
 
-        canvas.restore()
+        _paintCurtain(canvas, 0.5 * Settings.screenWidth, 0.5 * Settings.screenHeight, -width, width)
     }
+}
+
+function _paintCurtain(canvas: CanvasRenderingContext2D, x: number, y: number, width: number, start = 0) {
+    canvas.save()
+
+    canvas.translate(x, y)
+    canvas.rotate(-0.5124) // Math.atan2(-540, 960)
+
+    canvas.beginPath()
+    canvas.lineTo(start, -500)
+    canvas.lineTo(width, -500)
+    canvas.lineTo(width, 1000)
+    canvas.lineTo(start, 1000)
+    canvas.closePath()
+
+    canvas.restore()
+
+    canvas.save()
+
+    canvas.clip()
+
+    canvas.fillRect(0, 0, Settings.screenWidth, Settings.screenHeight)
+
+    canvas.restore()
 }

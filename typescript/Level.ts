@@ -18,8 +18,9 @@ class Level extends NScene {
     website: Website
     state: LevelState
     waited: number
+    curtain: number
 
-    constructor(startingPoint: NVec2) {
+    constructor(startingPoint: NVec2, curtain = 0) {
         super()
         this.startingPoint = startingPoint
         this.reticle = new Reticle(this, startingPoint)
@@ -28,6 +29,7 @@ class Level extends NScene {
         this.website = new Website
         this.state = LevelState.INITIAL
         this.waited = 0
+        this.curtain = curtain
     }
 
     launch(): boolean {

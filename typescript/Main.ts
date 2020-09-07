@@ -1,6 +1,8 @@
 'use strict'
 /// <reference path="js13k2020.d.ts" />
 
+const Levels = [Level]
+
 let activeLevel: Level
 
 (function () {
@@ -10,7 +12,7 @@ let activeLevel: Level
 
     let updatesToRetractFiringPin: number
 
-    activeLevel = new Level(startingPoint)
+    activeLevel = new Levels[0](startingPoint)
 
     function update() {
         activeLevel.integrate()
@@ -27,20 +29,18 @@ let activeLevel: Level
         else if (activeLevel.state === LevelState.WAITING) {
             if (++activeLevel.waited >= Settings.waitLevel) {
                 activeLevel.state = LevelState.FAILING
-                activeLevel.waited = 0
             }
         }
 
         else if (activeLevel.state === LevelState.FAILING) {
-            if (++activeLevel.waited >= Settings.waitCurtain) {
-                activeLevel = new Level(startingPoint)
-                activeLevel.waited = Settings.waitCurtain
+            if (++activeLevel.curtain >= Settings.waitCurtain) {
+                activeLevel = new Levels[0](startingPoint, Settings.waitCurtain)
                 activeLevel.state = LevelState.RESTARTING
             }
         }
 
         else if (activeLevel.state === LevelState.RESTARTING) {
-            if (--activeLevel.waited <= 0) {
+            if (--activeLevel.curtain <= 0) {
                 activeLevel.state = LevelState.INITIAL
             }
         }

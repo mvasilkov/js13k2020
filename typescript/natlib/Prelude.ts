@@ -14,8 +14,10 @@ const enum Settings {
     reticleStiffness = 0.1,
     targetCaptureDist = 64,
     targetReleaseDist = 256,
-    waitCurtain = 48,
+    waitCurtain = 24,
     waitLevel = 144,
+    websiteHeight = 196,
+    websiteWidth = 110,
 }
 
 const register0 = new NVec2

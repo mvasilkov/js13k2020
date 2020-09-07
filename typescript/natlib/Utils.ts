@@ -44,3 +44,17 @@ function enclose(x0: number, y0: number, x1: number, y1: number) {
     canvas.translate(x0, y0)
     canvas.scale((x1 - x0) / 512, (y1 - y0) / 512)
 }
+
+/** A rendering function. */
+type RenderFun = (canvas: CanvasRenderingContext2D) => void
+
+/** Render a static picture on canvas. */
+function prerender(width: number, height: number, render: RenderFun): HTMLCanvasElement {
+    const $can = document.createElement('canvas')
+    const can = $can.getContext('2d')!
+
+    setSize($can, can, width, height)
+    render(can)
+
+    return $can
+}
