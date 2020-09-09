@@ -58,6 +58,7 @@ const EARTH_BACK = canvas.createLinearGradient(
     0, Settings.screenHeight,
     Settings.screenWidth, 0
 )
+// Colors: https://webgradients.com/ '019 Malibu Beach'
 EARTH_BACK.addColorStop(0, '#4facfe')
 EARTH_BACK.addColorStop(1, '#00f2fe')
 

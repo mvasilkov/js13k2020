@@ -5,6 +5,7 @@
 /// <reference path="Firefox.ts" />
 /// <reference path="InternetExplorer.ts" />
 /// <reference path="BigBrother.ts" />
+/// <reference path="Wall.ts" />
 /// <reference path="Website.ts" />
 /// <reference path="Level.ts" />
 /// <reference path="Background.ts" />
