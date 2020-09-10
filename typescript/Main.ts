@@ -30,6 +30,7 @@ let activeLevel: Level
             if (++activeLevel.waited >= Settings.waitLevel) {
                 activeLevel.state = LevelState.FAILING
             }
+            else activeLevel.website.update()
         }
 
         else if (activeLevel.state === LevelState.FAILING) {
@@ -80,7 +81,7 @@ let activeLevel: Level
 
         paintBackground(canvas, t, activeLevel)
 
-        activeLevel.website.paint(canvas)
+        activeLevel.website.paint(canvas, t)
 
         for (const b of activeLevel.bodies) {
             b.paint(canvas, t)

@@ -19,6 +19,7 @@ class Level extends NScene {
     state: LevelState
     waited: number
     curtain: number
+    curtainPicture: HTMLCanvasElement
 
     constructor(startingPoint: NVec2, curtain = 0) {
         super()
@@ -30,6 +31,7 @@ class Level extends NScene {
         this.state = LevelState.INITIAL
         this.waited = 0
         this.curtain = curtain
+        this.curtainPicture = FAILURE_PICTURE
     }
 
     updateTargeting(pos: IVec2) {
