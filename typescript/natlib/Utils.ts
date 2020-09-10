@@ -4,6 +4,7 @@
 const TWOPI = 2 * Math.PI
 const HALFPI = 0.5 * Math.PI
 const FOURTHPI = 0.25 * Math.PI
+const EIGHTHPI = 0.125 * Math.PI
 
 /** Linear interpolation. */
 function lerp(a: number, b: number, t: number): number {

@@ -25,4 +25,9 @@ class NStaticVertex extends NVertex {
         this.position.set(this.x, this.y)
         this.oldPosition.set(this.x, this.y)
     }
+
+    /** Interpolate this vertex. */
+    interpolate(_t: number) {
+        this.interpolated.set(this.x, this.y)
+    }
 }

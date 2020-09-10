@@ -20,6 +20,23 @@ class Wall extends NBody {
         // Create constraints.
         new NConstraint(this, v0, v2, false, stiffness)
         new NConstraint(this, v1, v3, false, stiffness)
+
+        this.center.set(x + 32, y + 128)
+        this.halfExtents.set(32, 128)
+    }
+
+    rotate(angle: number) {
+        const cos = Math.cos(angle)
+        const sin = Math.sin(angle)
+
+        for (const vert of <NStaticVertex[]>this.vertices) {
+            register0.setSubtract(vert.position, this.center)
+            vert.set(
+                this.center.x + register0.x * cos - register0.y * sin,
+                this.center.y + register0.x * sin + register0.y * cos
+            )
+            vert.integrate()
+        }
     }
 
     paint(canvas: CanvasRenderingContext2D, t: number) {
