@@ -15,7 +15,7 @@ const enum Settings {
     targetCaptureDist = 64,
     targetReleaseDist = 256,
     waitCurtain = 24,
-    waitLevel = 144,
+    waitLevel = 196,
     websiteHeight = 196,
     websiteWidth = 110,
 }

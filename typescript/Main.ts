@@ -47,17 +47,7 @@ let activeLevel: Level
     }
 
     function render(t: number) {
-        paintBackground(canvas, t, activeLevel)
-
-        activeLevel.website.paint(canvas)
-
-        for (const b of activeLevel.bodies) {
-            b.paint(canvas, t)
-        }
-
-        paintCurtain(canvas, t, activeLevel)
-
-        // targeting vertex
+        // #region Pointer events.
         if (pointer.dragging) {
             if (!pointer.vertex && startingPoint.distanceSquared(pointer) <= captureDistSquared) {
                 pointer.vertex = activeLevel.reticle.targetingVertex
@@ -76,7 +66,7 @@ let activeLevel: Level
                     pos.add(startingPoint)
                 }
 
-                activeLevel.reticle.lastPosition.setTo(pos)
+                activeLevel.updateTargeting(pos)
             }
         }
         else if (activeLevel.state === LevelState.AIMING) {
@@ -86,6 +76,17 @@ let activeLevel: Level
             }
             else activeLevel.state = LevelState.INITIAL
         }
+        // #endregion
+
+        paintBackground(canvas, t, activeLevel)
+
+        activeLevel.website.paint(canvas)
+
+        for (const b of activeLevel.bodies) {
+            b.paint(canvas, t)
+        }
+
+        paintCurtain(canvas, t, activeLevel)
     }
 
     startMainloop(update, render)

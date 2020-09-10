@@ -2,6 +2,7 @@
 /// <reference path="Utils.ts" />
 /// <reference path="Prelude.ts" />
 /// <reference path="NVertex.ts" />
+/// <reference path="NStaticVertex.ts" />
 /// <reference path="NConstraint.ts" />
 /// <reference path="NBody.ts" />
 /// <reference path="SAT.ts" />
