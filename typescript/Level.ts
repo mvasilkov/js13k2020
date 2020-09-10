@@ -13,7 +13,7 @@ const enum LevelState {
 class Level extends NScene {
     startingPoint: NVec2
     reticle: Reticle
-    projectile: NBall
+    projectile: UserAgent
     firingPin: FiringPin | null
     website: Website
     state: LevelState
@@ -21,11 +21,16 @@ class Level extends NScene {
     curtain: number
     curtainPicture: HTMLCanvasElement
 
+    static getUserAgent() {
+        return Firefox
+    }
+
     constructor(startingPoint: NVec2, curtain = 0) {
         super()
         this.startingPoint = startingPoint
         this.reticle = new Reticle(this, startingPoint)
-        this.projectile = new Firefox(this, startingPoint.x, startingPoint.y) // 32, 16, 0.016
+        this.projectile = new ((<typeof Level>this.constructor).getUserAgent())
+            (this, startingPoint.x, startingPoint.y) // 32, 16, 0.016
         this.firingPin = null
         this.website = new Website
         this.state = LevelState.INITIAL

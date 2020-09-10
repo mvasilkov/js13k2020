@@ -1,0 +1,37 @@
+'use strict'
+/// <reference path="../js13k2020.d.ts" />
+
+class GravityLevel extends Level {
+    static getUserAgent() {
+        return InternetExplorer
+    }
+
+    constructor(startingPoint: NVec2, curtain = 0) {
+        super(startingPoint, curtain)
+
+        this.website = new NoWebsite
+
+        new WebsiteBox(this,
+            Settings.screenWidth - Settings.websiteWidth - 1,
+            (Settings.screenHeight - Settings.websiteHeight) * 0.5)
+    }
+
+    /** Verlet integration loop. */
+    integrate() {
+        let gravity: number
+        let fg: number
+
+        if (this.state === LevelState.WAITING) {
+            gravity = 0.9
+            fg = 0.5
+        }
+        else {
+            gravity = Settings.kGravity
+            fg = Settings.kFrictionGround
+        }
+
+        for (let i = 0; i < this.vertices.length; ++i) {
+            this.vertices[i].integrate(gravity, fg)
+        }
+    }
+}

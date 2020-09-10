@@ -21,21 +21,21 @@ class NVertex {
     }
 
     /** Verlet integration. */
-    integrate() {
+    integrate(gravity = Settings.kGravity, fg = Settings.kFrictionGround) {
         const pos = this.position
         const old = this.oldPosition
         const x = pos.x
         const y = pos.y
 
         pos.x += (pos.x - old.x) * Settings.kViscosity
-        pos.y += (pos.y - old.y) * Settings.kViscosity + Settings.kGravity
+        pos.y += (pos.y - old.y) * Settings.kViscosity + gravity
 
         old.set(x, y)
 
         // screen limits
         if (pos.y < 0) pos.y = 0
         else if (pos.y >= Settings.screenHeight) {
-            pos.x -= (pos.x - old.x) * Settings.kFrictionGround
+            pos.x -= (pos.x - old.x) * fg
             pos.y = Settings.screenHeight - 1
         }
 

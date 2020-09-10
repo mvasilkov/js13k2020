@@ -8,7 +8,7 @@ class Reticle extends NBody {
 
     constructor(scene: NScene, startingPoint: IVec2) {
         super(scene)
-        this.startingVertex = new NVertex(this, startingPoint.x, startingPoint.y)
+        this.startingVertex = new NStaticVertex(this, startingPoint.x, startingPoint.y)
         this.targetingVertex = new NVertex(this, startingPoint.x - 0.001, startingPoint.y)
         this.lastPosition = new NVec2(startingPoint.x, startingPoint.y)
 
