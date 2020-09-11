@@ -12,6 +12,7 @@ class Distancing extends Level {
             Settings.screenHeight * 0.5)
     }
 
+    /** Verlet integration loop. */
     integrate() {
         do {
             if (this.state !== LevelState.WAITING) break

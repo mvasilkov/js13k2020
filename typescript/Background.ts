@@ -47,6 +47,30 @@ const WALL_PICTURE = prerender(Settings.screenWidth, Settings.screenHeight, canv
 
 function paintBackground(canvas: CanvasRenderingContext2D, t: number, level: Level) {
     canvas.clearRect(0, 0, Settings.screenWidth, Settings.screenHeight)
+
+    if (level.constructor === Level) {
+        canvas.font = systemFont
+        canvas.textAlign = 'center'
+        canvas.textBaseline = 'top'
+        canvas.fillStyle = '#f1f1f1'
+
+        canvas.fillText('1. Pull', level.startingPoint.x, level.startingPoint.y + 48)
+        canvas.fillText('2. Release', level.startingPoint.x - Settings.targetReleaseDist,
+            level.startingPoint.y + 48)
+    }
+    else if (level.constructor === End) {
+        canvas.font = systemFont
+        canvas.textAlign = 'center'
+        canvas.textBaseline = 'middle'
+        canvas.fillStyle = '#f1f1f1'
+
+        canvas.fillText('Written by Mark Vasilkov for js13kGames in 2020', Settings.screenWidth * 0.5, Settings.screenHeight - 24)
+
+        canvas.font = systemFontHeading
+        canvas.fillStyle = EARTH_BACK
+
+        canvas.fillText('Thank you for playing!', Settings.screenWidth * 0.5, Settings.screenHeight * 0.25)
+    }
 }
 
 function paintCurtain(canvas: CanvasRenderingContext2D, t: number, level: Level) {

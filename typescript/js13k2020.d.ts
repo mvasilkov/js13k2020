@@ -20,5 +20,6 @@
 /// <reference path="levels/Level_07_Moving.ts" />
 /// <reference path="levels/Level_08_Distancing.ts" />
 /// <reference path="levels/Level_09_Hopeless.ts" />
+/// <reference path="levels/Level_10_End.ts" />
 /// <reference path="Background.ts" />
 /// <reference path="Main.ts" />

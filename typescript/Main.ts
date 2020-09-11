@@ -11,6 +11,7 @@ const Levels = [
     Moving,
     Distancing,
     Hopeless,
+    End,
 ]
 
 let activeLevel: Level
