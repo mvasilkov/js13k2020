@@ -18,8 +18,8 @@ const pointer: IPointer = {
 /** Set the pointer position. */
 function setPointerPosition(event: MouseEvent | Touch) {
     const r = $box.getBoundingClientRect()
-    pointer.x = event.clientX - r.left
-    pointer.y = event.clientY - r.top
+    pointer.x = (event.clientX - r.left) * uiScale
+    pointer.y = (event.clientY - r.top) * uiScale
 }
 
 /** Mouse events. */

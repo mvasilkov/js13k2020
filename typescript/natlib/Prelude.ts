@@ -26,4 +26,4 @@ const enum Settings {
 const register0 = new NVec2
 const register1 = new NVec2
 
-const $box = $('.box')
+const $box = <HTMLElement>$('.box')

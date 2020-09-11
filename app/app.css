@@ -1,3 +1,14 @@
+* {
+    -ms-touch-action: none;
+    touch-action: none;
+    -moz-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 body {
     align-items: center;
     background: #101010;
@@ -8,13 +19,15 @@ body {
     overflow: hidden;
 }
 
-.box {}
+.box {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+}
 
 .can {
     background: #000;
     display: block;
     height: 540px;
     outline: 1px solid #202020;
-    touch-action: none;
     width: 960px;
 }

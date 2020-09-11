@@ -22,6 +22,7 @@ class Level extends NScene {
     waited: number
     curtain: number
     curtainPicture: HTMLCanvasElement
+    autoWin: boolean
 
     static getUserAgent() {
         if (location.search.match(/firefox=1/) !== null) return Firefox
@@ -43,6 +44,7 @@ class Level extends NScene {
         this.waited = 0
         this.curtain = curtain
         this.curtainPicture = FAILURE_PICTURE
+        this.autoWin = false
     }
 
     updateTargeting(pos: IVec2) {

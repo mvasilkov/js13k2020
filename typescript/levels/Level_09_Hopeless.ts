@@ -11,6 +11,7 @@ class Hopeless extends Level {
 
         this.website = new NoWebsite
         this.duration = 196
+        this.autoWin = true
 
         new WebsiteBox(this,
             Settings.screenWidth - Settings.websiteWidth - 1,

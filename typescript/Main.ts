@@ -43,7 +43,17 @@ let nextLevel: Level
 
         else if (activeLevel.state === LevelState.WAITING) {
             if (++activeLevel.waited >= activeLevel.duration) {
-                activeLevel.state = LevelState.FAILING
+                if (activeLevel.autoWin) {
+                    activeLevel.state = LevelState.WINNING
+                    nextLevel = new Levels[(activeLevel.getIndex() + 1) % Levels.length](startingPoint)
+                    panningCounter = 0
+                    // Reset pointer.
+                    pointer.dragging = false
+                    pointer.vertex = undefined
+                }
+                else {
+                    activeLevel.state = LevelState.FAILING
+                }
             }
             else if (activeLevel.website.contains(activeLevel.projectile.center)) {
                 if (--updatesToWin <= 0) {
@@ -172,6 +182,8 @@ let nextLevel: Level
             canvas.restore()
         }
     }
+
+    handleResize()
 
     startMainloop(update, render)
 })()
