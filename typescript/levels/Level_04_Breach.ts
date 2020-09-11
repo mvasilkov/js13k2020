@@ -16,4 +16,8 @@ class Breach extends TheWall {
         new Wall(this, startingPoint.x + 256, y0 - 256, 1, 9999)
         new Wall(this, startingPoint.x + 256, Settings.screenHeight - y0, 1, 9999)
     }
+
+    getIndex() {
+        return 3
+    }
 }

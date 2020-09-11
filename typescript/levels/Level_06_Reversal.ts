@@ -20,4 +20,8 @@ class Reversal extends Level {
         // This is our new projectile.
         new Box(this, startingPoint.x, startingPoint.y, 64, 0.5, 4)
     }
+
+    getIndex() {
+        return 5
+    }
 }

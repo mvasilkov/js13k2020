@@ -14,7 +14,7 @@ class Distancing extends Level {
 
     integrate() {
         do {
-            if (this.state != LevelState.WAITING) break
+            if (this.state !== LevelState.WAITING) break
 
             register0.setSubtract(this.projectile.center, this.clone.center)
 
@@ -31,5 +31,9 @@ class Distancing extends Level {
         while (false)
 
         super.integrate()
+    }
+
+    getIndex() {
+        return 7
     }
 }

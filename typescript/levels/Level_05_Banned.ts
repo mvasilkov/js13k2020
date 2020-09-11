@@ -29,4 +29,8 @@ class Banned extends TheWall {
         v[2].set(x + cos64, y + sin64)
         v[3].set(x, y)
     }
+
+    getIndex() {
+        return 4
+    }
 }

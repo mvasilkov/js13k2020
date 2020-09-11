@@ -21,7 +21,7 @@ class Hopeless extends Level {
         let gravity: number
         let fg: number
 
-        if (this.state >= LevelState.WAITING) {
+        if (this.state === LevelState.WAITING || this.state === LevelState.FAILING || this.state === LevelState.WINNING) {
             gravity = 0.9
             fg = 0.5
         }
@@ -33,5 +33,9 @@ class Hopeless extends Level {
         for (let i = 0; i < this.vertices.length; ++i) {
             this.vertices[i].integrate(gravity, fg)
         }
+    }
+
+    getIndex() {
+        return 8
     }
 }

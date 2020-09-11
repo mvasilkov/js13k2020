@@ -61,4 +61,8 @@ class Level extends NScene {
 
         return true
     }
+
+    getIndex() {
+        return 0
+    }
 }

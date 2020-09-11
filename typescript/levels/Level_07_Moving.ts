@@ -9,11 +9,16 @@ class Moving extends Level {
         this.curtainPicture = FAILURE_MOVED_PICTURE
     }
 
+    /** Solve constraints and collisions. */
     solve() {
         super.solve()
 
-        if (this.state >= LevelState.WAITING) {
+        if (this.state === LevelState.WAITING || this.state === LevelState.FAILING || this.state === LevelState.WINNING) {
             this.website.update()
         }
+    }
+
+    getIndex() {
+        return 6
     }
 }

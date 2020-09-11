@@ -70,7 +70,7 @@ const satResolve = (function () {
 
         // There is no separating axis.
         // Ensure collision edge in `b1` and collision vertex in `b0`.
-        if (cEdge.parent != b1) {
+        if (cEdge.parent !== b1) {
             const t = b0
             b0 = b1
             b1 = t
