@@ -1,3 +1,7 @@
+/* This file is part of natlib.
+ * natlib, a library for games, is planned to release in early 2021.
+ * https://github.com/mvasilkov/natlib
+ */
 'use strict'
 /// <reference path="natlib.d.ts" />
 
