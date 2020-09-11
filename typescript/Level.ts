@@ -24,6 +24,9 @@ class Level extends NScene {
     curtainPicture: HTMLCanvasElement
 
     static getUserAgent() {
+        if (location.search.match(/firefox=1/) !== null) return Firefox
+        if (location.search.match(/piracy=1/) !== null) return BigBrother
+        if (document.monetization && document.monetization.state === 'started') return BigBrother
         return Firefox
     }
 
