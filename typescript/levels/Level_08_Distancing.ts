@@ -1,7 +1,7 @@
 'use strict'
 /// <reference path="../js13k2020.d.ts" />
 
-class CloneLevel extends Level {
+class Distancing extends Level {
     clone: UserAgent
 
     constructor(startingPoint: NVec2, curtain = 0) {

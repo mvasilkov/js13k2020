@@ -1,7 +1,7 @@
 'use strict'
 /// <reference path="../js13k2020.d.ts" />
 
-class GravityLevel extends Level {
+class Hopeless extends Level {
     static getUserAgent() {
         return InternetExplorer
     }

@@ -1,7 +1,7 @@
 'use strict'
 /// <reference path="../js13k2020.d.ts" />
 
-class MovingLevel extends Level {
+class Moving extends Level {
     constructor(startingPoint: NVec2, curtain = 0) {
         super(startingPoint, curtain)
 

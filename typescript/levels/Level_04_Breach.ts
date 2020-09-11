@@ -1,7 +1,7 @@
 'use strict'
 /// <reference path="../js13k2020.d.ts" />
 
-class BreakWallLevel extends WallLevel {
+class Breach extends TheWall {
     constructor(startingPoint: NVec2, curtain = 0) {
         super(startingPoint, curtain)
 

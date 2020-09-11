@@ -1,7 +1,7 @@
 'use strict'
 /// <reference path="../js13k2020.d.ts" />
 
-class BlockerLevel extends WallLevel {
+class Banned extends TheWall {
     updateTargeting(pos: IVec2) {
         this.reticle.lastPosition.setTo(pos)
 
