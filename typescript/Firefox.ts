@@ -1,6 +1,9 @@
 'use strict'
 /// <reference path="js13k2020.d.ts" />
 
+/* Traced using the Polar Bears tool:
+ * https://codepen.io/mvasilkov/details/VwaMMPK
+ */
 const FIREFOX = [
     [0, 0, 1, 0],
     [1, 1, 1, 0],

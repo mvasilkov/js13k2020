@@ -11,6 +11,7 @@ let activeLevel: Level
     const releaseDistSquared = Settings.targetReleaseDist ** 2
 
     let updatesToRetractFiringPin: number
+    let updatesToWin: number
 
     activeLevel = new Levels[0](startingPoint)
 
@@ -23,6 +24,7 @@ let activeLevel: Level
                 activeLevel.firingPin!.retract()
                 activeLevel.firingPin = null
                 activeLevel.state = LevelState.WAITING
+                updatesToWin = 2
             }
         }
 
@@ -30,7 +32,11 @@ let activeLevel: Level
             if (++activeLevel.waited >= Settings.waitLevel) {
                 activeLevel.state = LevelState.FAILING
             }
-            else activeLevel.website.update()
+            else if (activeLevel.website.contains(activeLevel.projectile.center)) {
+                if (--updatesToWin <= 0) {
+                    activeLevel.state = LevelState.WINNING
+                }
+            }
         }
 
         else if (activeLevel.state === LevelState.FAILING) {

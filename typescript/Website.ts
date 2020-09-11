@@ -67,6 +67,13 @@ class Website {
     update() {
     }
 
+    contains(p: IVec2): boolean {
+        return (
+            p.x >= this.x && p.x - this.x < this.width &&
+            p.y >= this.y && p.y - this.y < this.height
+        )
+    }
+
     paint(canvas: CanvasRenderingContext2D, _t: number) {
         canvas.fillStyle = '#f1f1f1'
         canvas.fillRect(this.x, this.y, this.width, this.height)

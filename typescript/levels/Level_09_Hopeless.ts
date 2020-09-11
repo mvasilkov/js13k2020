@@ -21,7 +21,7 @@ class Hopeless extends Level {
         let gravity: number
         let fg: number
 
-        if (this.state === LevelState.WAITING) {
+        if (this.state >= LevelState.WAITING) {
             gravity = 0.9
             fg = 0.5
         }

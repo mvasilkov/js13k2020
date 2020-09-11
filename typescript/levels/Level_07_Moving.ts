@@ -8,4 +8,12 @@ class Moving extends Level {
         this.website = new MovingWebsite
         this.curtainPicture = FAILURE_MOVED_PICTURE
     }
+
+    solve() {
+        super.solve()
+
+        if (this.state >= LevelState.WAITING) {
+            this.website.update()
+        }
+    }
 }

@@ -8,6 +8,7 @@ const enum LevelState {
     WAITING,
     FAILING,
     RESTARTING,
+    WINNING,
 }
 
 class Level extends NScene {
