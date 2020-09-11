@@ -18,6 +18,8 @@ const enum Settings {
     waitLevel = 196,
     websiteHeight = 196,
     websiteWidth = 110,
+    websitePicHeight = 64,
+    websitePicWidth = 88,
 }
 
 const register0 = new NVec2

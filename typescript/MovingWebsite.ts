@@ -87,8 +87,12 @@ class MovingWebsite extends Website {
             height = lerp(this.old.height, this.height, t)
         }
 
-        // canvas.drawImage(WEBSITE_PICTURE, this.x, this.y, Settings.websiteWidth, Settings.websiteHeight)
-        canvas.fillStyle = '#fff'
+        canvas.fillStyle = '#f1f1f1'
         canvas.fillRect(x, y, width, height)
+
+        canvas.drawImage(WEBSITE_PICTURE,
+            x + (width - Settings.websitePicWidth) * 0.5,
+            y + (height - Settings.websitePicHeight) * 0.5,
+            Settings.websitePicWidth, Settings.websitePicHeight)
     }
 }

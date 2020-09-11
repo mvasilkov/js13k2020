@@ -32,14 +32,38 @@ class WebsiteBox extends NBody {
         // Trace path.
         canvas.beginPath()
 
+        let xx = 0
+        let yy = 0
+
         for (let n = 0; n < 4; ++n) {
-            canvas.lineTo(this.vertices[n].interpolated.x, this.vertices[n].interpolated.y)
+            const p = this.vertices[n].interpolated
+
+            canvas.lineTo(p.x, p.y)
+
+            xx += p.x
+            yy += p.y
         }
 
         canvas.closePath()
 
         // Paint background.
-        canvas.fillStyle = '#fff'
+        canvas.fillStyle = '#f1f1f1'
         canvas.fill()
+
+        // Paint website logo.
+        register0.setSubtract(this.vertices[1].interpolated, this.vertices[0].interpolated)
+        register1.setSubtract(this.vertices[2].interpolated, this.vertices[3].interpolated)
+
+        canvas.save()
+
+        canvas.translate(0.25 * xx, 0.25 * yy)
+        canvas.rotate(0.5 * (Math.atan2(register0.y, register0.x) + Math.atan2(register1.y, register1.x)))
+
+        canvas.drawImage(WEBSITE_PICTURE,
+            -0.5 * Settings.websitePicWidth,
+            -0.5 * Settings.websitePicHeight,
+            Settings.websitePicWidth, Settings.websitePicHeight)
+
+        canvas.restore()
     }
 }
