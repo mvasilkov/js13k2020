@@ -53,7 +53,7 @@ function paintCurtain(canvas: CanvasRenderingContext2D, t: number, level: Level)
     let width: number
 
     if (level.state === LevelState.WAITING) {
-        width = (level.waited - 1 + t) / Settings.waitLevel * Settings.screenWidth
+        width = (level.waited - 1 + t) / level.duration * Settings.screenWidth
 
         canvas.fillStyle = FAILURE_BACK
         canvas.fillRect(0, 0, width, 3)

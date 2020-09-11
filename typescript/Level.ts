@@ -18,6 +18,7 @@ class Level extends NScene {
     firingPin: FiringPin | null
     website: Website
     state: LevelState
+    duration: number
     waited: number
     curtain: number
     curtainPicture: HTMLCanvasElement
@@ -35,6 +36,7 @@ class Level extends NScene {
         this.firingPin = null
         this.website = new Website
         this.state = LevelState.INITIAL
+        this.duration = Settings.waitLevel
         this.waited = 0
         this.curtain = curtain
         this.curtainPicture = FAILURE_PICTURE

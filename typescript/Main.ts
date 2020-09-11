@@ -41,7 +41,7 @@ let nextLevel: Level
         }
 
         else if (activeLevel.state === LevelState.WAITING) {
-            if (++activeLevel.waited >= Settings.waitLevel) {
+            if (++activeLevel.waited >= activeLevel.duration) {
                 activeLevel.state = LevelState.FAILING
             }
             else if (activeLevel.website.contains(activeLevel.projectile.center)) {
@@ -71,6 +71,12 @@ let nextLevel: Level
                 activeLevel.state = LevelState.INITIAL
             }
         }
+
+        else if (activeLevel.state === LevelState.WINNING) {
+            if (++panningCounter > Settings.waitNextLevel) {
+                activeLevel = nextLevel
+            }
+        }
     }
 
     function render(t: number) {
@@ -80,30 +86,25 @@ let nextLevel: Level
 
         // Panning part 1.
         if (activeLevel.state === LevelState.WINNING) {
-            if (panningCounter > Settings.waitNextLevel) {
-                activeLevel = nextLevel
-            }
-            else {
-                canvas.fillStyle = EARTH_BACK
-                canvas.fillRect(0, 0, Settings.screenWidth, Settings.screenHeight)
+            canvas.fillStyle = EARTH_BACK
+            canvas.fillRect(0, 0, Settings.screenWidth, Settings.screenHeight)
 
-                canvas.save()
+            canvas.save()
 
-                tPan = (panningCounter - 1 + t) / Settings.waitNextLevel
-                sPan = lerp(1, 0.5, easeInOutQuad(tPan))
+            tPan = (panningCounter - 1 + t) / Settings.waitNextLevel
+            sPan = lerp(1, 0.5, easeInOutQuad(tPan))
 
-                canvas.translate(Settings.screenWidth * 0.5, Settings.screenHeight * 0.5)
-                canvas.scale(sPan, sPan)
-                canvas.translate(-Settings.screenWidth * 0.5, -Settings.screenHeight * 0.5)
+            canvas.translate(Settings.screenWidth * 0.5, Settings.screenHeight * 0.5)
+            canvas.scale(sPan, sPan)
+            canvas.translate(-Settings.screenWidth * 0.5, -Settings.screenHeight * 0.5)
 
-                canvas.translate(lerp(0, -Settings.screenWidth, easeInOutQuad(tPan)), 0)
+            canvas.translate(lerp(0, -Settings.screenWidth, easeInOutQuad(tPan)), 0)
 
-                canvas.beginPath()
+            canvas.beginPath()
 
-                canvas.rect(0, 0, Settings.screenWidth, Settings.screenHeight)
+            canvas.rect(0, 0, Settings.screenWidth, Settings.screenHeight)
 
-                canvas.clip()
-            }
+            canvas.clip()
         }
 
         // #region Pointer events.
@@ -168,8 +169,6 @@ let nextLevel: Level
             // #endregion
 
             canvas.restore()
-
-            ++panningCounter
         }
     }
 

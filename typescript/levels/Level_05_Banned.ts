@@ -2,6 +2,12 @@
 /// <reference path="../js13k2020.d.ts" />
 
 class Banned extends TheWall {
+    constructor(startingPoint: NVec2, curtain = 0) {
+        super(startingPoint, curtain)
+
+        this.duration = 196
+    }
+
     updateTargeting(pos: IVec2) {
         this.reticle.lastPosition.setTo(pos)
 

@@ -34,13 +34,13 @@ class Reticle extends NBody {
         canvas.beginPath()
         canvas.moveTo(pos.x, pos.y)
         canvas.lineTo(start.x, start.y)
-        canvas.strokeStyle = '#f54f4f'
+        canvas.strokeStyle = FAILURE_BACK
         canvas.stroke()
 
         canvas.beginPath()
         canvas.arc(pos.x, pos.y, 9, 0, TWOPI)
         canvas.arc(start.x, start.y, 4, 0, TWOPI)
-        canvas.fillStyle = '#f54f4f'
+        canvas.fillStyle = FAILURE_BACK
         canvas.fill()
     }
 }

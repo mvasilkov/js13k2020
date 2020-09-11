@@ -10,6 +10,7 @@ class Hopeless extends Level {
         super(startingPoint, curtain)
 
         this.website = new NoWebsite
+        this.duration = 196
 
         new WebsiteBox(this,
             Settings.screenWidth - Settings.websiteWidth - 1,
