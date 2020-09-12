@@ -41,6 +41,10 @@ document.addEventListener('mouseup', event => {
 
     pointer.dragging = false
     pointer.vertex = undefined
+
+    if (!audioInitialized) {
+        initializeAudio()
+    }
 })
 
 /** Touch events. */
@@ -62,6 +66,10 @@ document.addEventListener('touchend', event => {
 
     pointer.dragging = false
     pointer.vertex = undefined
+
+    if (!audioInitialized) {
+        initializeAudio()
+    }
 })
 
 document.addEventListener('touchcancel', event => {

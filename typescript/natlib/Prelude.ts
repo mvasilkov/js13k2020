@@ -26,22 +26,54 @@ const enum Settings {
 const register0 = new NVec2
 const register1 = new NVec2
 
-// Sounds.
+// Play a sound.
+function sound(snd: Snd) {
+    try {
+        if (snd.buf === null) {
+            snd.buf = ac.createBuffer(1, snd.raw.length, zzfxR)
+            snd.buf.getChannelData(0).set(snd.raw)
+        }
 
-function sound(buffer: AudioBuffer) {
-    const source = zzfxX.createBufferSource()
-    source.buffer = buffer
-    source.connect(zzfxX.destination)
-    source.start()
+        const bufs = ac.createBufferSource()
+        bufs.buffer = snd.buf
+        bufs.connect(ac.destination)
+        bufs.start()
+    }
+    catch (err) {
+    }
 }
 
-const sndLaunch =
+type Snd = {
+    raw: number[]
+    buf: AudioBuffer | null
+}
+
+const sndLaunch: Snd = {
     // zzfxMicro(...[,,398,.02,.06,.4,2,0,2.4,,,,,,,,.03,.79,.01])
-    zzfxMicro(...[,,132,,,.46,,.11,9.1,,,,,.1,,,.04,.56,.05])
+    raw: zzfxMicro(...[,,132,,,.46,,.11,9.1,,,,,.1,,,.04,.56,.05]),
+    buf: null,
+}
 
-const sndFail =
-    zzfxMicro(...[,,382,,,.48,2,.35,-0.6,,,,,,,,.2,.72,.09])
+const sndFail: Snd = {
+    raw: zzfxMicro(...[,,382,,,.48,2,.35,-0.6,,,,,,,,.2,.72,.09]),
+    buf: null,
+}
 
-const sndWin =
+const sndWin: Snd = {
     // zzfxMicro(...[,,345,.01,.17,.87,2,1.05,.2,,67,.03,.02,,-0.2,,,.79,,.04])
-    zzfxMicro(...[,,345,.01,.17,.87,1,1.05,.2,,67,.03,.02,,-0.2,,,.79,,.04])
+    raw: zzfxMicro(...[,,345,.01,.17,.87,1,1.05,.2,,67,.03,.02,,-0.2,,,.79,,.04]),
+    buf: null,
+}
+
+let audioInitialized = false
+
+// Initialize audio.
+function initializeAudio() {
+    try {
+        audioInit().then(playLoop)
+    }
+    catch (err) {
+    }
+
+    audioInitialized = true
+}

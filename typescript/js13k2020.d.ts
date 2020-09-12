@@ -1,5 +1,10 @@
 /// <reference path="zzfx.d.ts" />
 /// <reference path="natlib/natlib.d.ts" />
+
+/// <reference path="audio/reverbgen.ts" />
+/// <reference path="audio/audio.ts" />
+/// <reference path="audio/oborona.ts" />
+
 /// <reference path="Reticle.ts" />
 /// <reference path="FiringPin.ts" />
 /// <reference path="UserAgent.ts" />

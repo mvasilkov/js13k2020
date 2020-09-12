@@ -1,11 +1,11 @@
 // sample rate
-declare const zzfxR: number
+declare let zzfxR: number
 
 // volume
-declare const zzfxV: number
+declare let zzfxV: number
 
 // audio context
-declare const zzfxX: AudioContext
+declare let zzfxX: AudioContext
 
 // play sound
-declare function zzfxMicro(...args: any): AudioBuffer
+declare function zzfxMicro(...args: any): number[]
