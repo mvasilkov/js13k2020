@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "clean-css-cli": "^4.3.0",
+    "html-minifier": "^4.0.0",
+    "terser": "^5.3.1"
+  }
+}
