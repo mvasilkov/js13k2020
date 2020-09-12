@@ -25,13 +25,15 @@ const aspectRatio = 16 / 9
 let uiScale = 1
 
 let transformProperty: 'transform' | 'webkitTransform' = 'transform'
-if (!(transformProperty in $box.style)) {
+if (!(transformProperty in $canvas.style)) {
     transformProperty = 'webkitTransform'
 }
 
+const hasVisualViewport = typeof visualViewport !== 'undefined'
+
 function handleResize() {
-    let w = innerWidth
-    let h = innerHeight
+    let w = hasVisualViewport ? visualViewport.width : innerWidth
+    let h = hasVisualViewport ? visualViewport.height : innerHeight
 
     if (w / h > aspectRatio)
         w = h * aspectRatio
@@ -42,11 +44,12 @@ function handleResize() {
 
     const k = w / Settings.screenWidth
 
-    $box.style[transformProperty] = `scale3d(${k},${k},1)`
+    $canvas.style[transformProperty] = `scale3d(${k},${k},1)`
 }
 
 addEventListener('resize', handleResize)
 addEventListener('orientationchange', handleResize)
+if (hasVisualViewport) visualViewport.addEventListener('resize', handleResize)
 // #endregion
 
 const systemFont = `16px -apple-system, 'Segoe UI', system-ui, Roboto, sans-serif`
