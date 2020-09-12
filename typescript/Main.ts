@@ -50,9 +50,11 @@ let nextLevel: Level
                     // Reset pointer.
                     pointer.dragging = false
                     pointer.vertex = undefined
+                    sound(sndWin)
                 }
                 else {
                     activeLevel.state = LevelState.FAILING
+                    sound(sndFail)
                 }
             }
             else if (activeLevel.website.contains(activeLevel.projectile.center)) {
@@ -63,6 +65,7 @@ let nextLevel: Level
                     // Reset pointer.
                     pointer.dragging = false
                     pointer.vertex = undefined
+                    sound(sndWin)
                 }
             }
         }
@@ -144,6 +147,7 @@ let nextLevel: Level
             if (activeLevel.launch()) {
                 activeLevel.state = LevelState.FIRING
                 updatesToRetractFiringPin = 4
+                sound(sndLaunch)
             }
             else activeLevel.state = LevelState.INITIAL
         }

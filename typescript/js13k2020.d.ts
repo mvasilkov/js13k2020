@@ -1,3 +1,4 @@
+/// <reference path="zzfx.d.ts" />
 /// <reference path="natlib/natlib.d.ts" />
 /// <reference path="Reticle.ts" />
 /// <reference path="FiringPin.ts" />

@@ -25,3 +25,23 @@ const enum Settings {
 
 const register0 = new NVec2
 const register1 = new NVec2
+
+// Sounds.
+
+function sound(buffer: AudioBuffer) {
+    const source = zzfxX.createBufferSource()
+    source.buffer = buffer
+    source.connect(zzfxX.destination)
+    source.start()
+}
+
+const sndLaunch =
+    // zzfxMicro(...[,,398,.02,.06,.4,2,0,2.4,,,,,,,,.03,.79,.01])
+    zzfxMicro(...[,,132,,,.46,,.11,9.1,,,,,.1,,,.04,.56,.05])
+
+const sndFail =
+    zzfxMicro(...[,,382,,,.48,2,.35,-0.6,,,,,,,,.2,.72,.09])
+
+const sndWin =
+    // zzfxMicro(...[,,345,.01,.17,.87,2,1.05,.2,,67,.03,.02,,-0.2,,,.79,,.04])
+    zzfxMicro(...[,,345,.01,.17,.87,1,1.05,.2,,67,.03,.02,,-0.2,,,.79,,.04])
