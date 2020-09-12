@@ -8,4 +8,4 @@ declare let zzfxV: number
 declare let zzfxX: AudioContext
 
 // play sound
-declare function zzfxMicro(...args: any): number[]
+declare function zzfxMicro(...args: (number | undefined)[]): number[]

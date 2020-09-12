@@ -9,6 +9,7 @@ npx html-minifier --collapse-whitespace --remove-attribute-quotes \
 npx cleancss -O1 -o build/app.css app/app.css
 
 npx terser --enclose --compress --mangle -o build/app.js \
+    sound/ZzFX/ZzFX.js out/audio/reverbgen.js out/audio/audio.js out/audio/oborona.js \
     out/natlib/NVec2.js out/natlib/Utils.js out/natlib/Prelude.js out/natlib/NVertex.js \
     out/natlib/NStaticVertex.js out/natlib/NConstraint.js out/natlib/NBody.js out/natlib/SAT.js \
     out/natlib/NBall.js out/natlib/NScene.js out/natlib/Canvas.js out/natlib/Pointer.js \
