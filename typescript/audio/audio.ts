@@ -57,7 +57,7 @@ function reverb() {
     dry.connect(ac.destination)
     wet.connect(ac.destination)
 
-    return new Promise(function (resolve) {
+    return new Promise<void>(function (resolve) {
         generateReverb({
             audioContext: ac,
             fadeIn: 0.00001,
